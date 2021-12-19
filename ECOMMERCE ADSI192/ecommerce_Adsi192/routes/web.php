@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RoutingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,15 +19,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Rutas para autenticación
-//Get es cuando se realiza una petición a traves de un navegador 
-//Se pone @ y la función a la que debe ir 
+// Plantilla (delete later)
+Route::get('/plantilla', [RoutingController::class, 'getPlantilla']);
+
+// Rutas para autenticación
+// Get es cuando se realiza una petición a traves de un navegador
+// Se pone @ y la función a la que debe ir
 Route::get('/login', [LoginController::class, 'getLogin'])->name('login');
 
-
+// Register
 Route::get('/register', [LoginController::class, 'getRegister'])->name('register');
 Route::post('/register', [LoginController::class, 'postRegister'])->name('register');
 
-
+// Recover
 Route::get('/recover', [LoginController::class, 'getRecover'])->name('recover');
 
+// Auth
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/example', [RoutingController::class, 'getExample'])->name('example');

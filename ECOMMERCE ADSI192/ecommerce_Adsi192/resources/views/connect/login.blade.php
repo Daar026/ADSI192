@@ -14,7 +14,7 @@
            <img class="logo" src="{{url('/static/images/logo.jpg')}}" alt="">
         </div>
 
-        {!!  Form::open(['url' => '/login']) !!}
+        {!!  Form::open(['url' => '/dashboard', 'method' => 'post']) !!}
 
         <label for="email">Correo electrónico:</label>
         <div class="input-group">
